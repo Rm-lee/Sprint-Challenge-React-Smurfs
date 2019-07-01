@@ -11,9 +11,8 @@ class App extends Component {
     this.state = {
       smurfs: [],
     };
-
-  
   }
+  //get smurfs from server using axios
   componentDidMount(){
     Axios.get('http://localhost:3333/smurfs')
     .then(response => {
@@ -26,6 +25,7 @@ class App extends Component {
       console.log('error:', err)
     })
 }
+//update function to update state and rerender list of smurfs
   update = smurfs => {
     console.log(smurfs)
      this.setState({
@@ -43,9 +43,8 @@ class App extends Component {
         <div className="nav">
           <NavLink to='/'>Smurfs</NavLink>
           <NavLink to='/smurf-form'>Add smurf</NavLink>
-
         </div>
-        <Route path='/' exact render={(props) => <Smurfs {...props} smurfs={this.state.smurfs} />} />
+        <Route path='/' exact render={(props) => <Smurfs {...props} smurfs={this.state.smurfs} update={this.update} />} />
         <Route path='/smurf-form' render={(props) => <SmurfForm {...props} smurfs={this.state.smurfs} update={this.update}/>} />
         
        

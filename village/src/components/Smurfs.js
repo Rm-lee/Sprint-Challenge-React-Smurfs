@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Link} from 'react-router-dom'
 import Smurf from './Smurf';
 
 class Smurfs extends Component {
@@ -11,6 +11,7 @@ class Smurfs extends Component {
           {this.props.smurfs.map(smurf => {
             return (
               <Smurf
+                update={this.props.update}
                 name={smurf.name}
                 id={smurf.id}
                 age={smurf.age}
@@ -20,6 +21,8 @@ class Smurfs extends Component {
             );
           })}
         </ul>
+        <Link to='/'>Smurfs</Link>
+        <Link to='/smurf-form'>Add smurf</Link>
       </div>
     );
   }
